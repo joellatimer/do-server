@@ -16,10 +16,12 @@ const res = require('express/lib/response')
     
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, Content-Type, X-Auth-Token" );
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization")
-    res.header("Access-Control-Content-Type", "text/plain")
-    res.header("Access-Control-Allow-Methods", "GET, POST, PATCH, OPTIONS, PUT, DELETE")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Authorization" );
+
+    if (req.method === 'Options') {
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET')
+    return res.status(200).json({})
+   }
     
     next();
 } )      
