@@ -21,9 +21,10 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
 app.use(cors({
-    origin: "http://204.48.21.44:81",
+    origin: "*",
     methods:['GET','POST','PUT', 'PATCH', 'DELETE'],
-    credentials: true
+    credentials: true,
+    options:"*"
 }))
 
 app.use('/groups', groupRoutes)
