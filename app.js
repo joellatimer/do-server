@@ -20,18 +20,9 @@ app.use(morgan('dev'))
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Authorization" );
-
-    if (req.method === 'Options') {
-    res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET')
-    return res.status(200).json({})
-   }
-    
-    next();
-} )      
-
+app.use(cors({
+    origin: "*",
+}))
 
 app.use('/groups', groupRoutes)
 app.use('/members', memberRoutes)
