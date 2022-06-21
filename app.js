@@ -21,7 +21,7 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
 app.use(cors({
-    origin: "*",
+    origin: "http://204.48.21.44",
     methods:['GET','POST','PUT', 'PATCH', 'DELETE'],
     credentials: true,
     options:"*"
